@@ -9,9 +9,13 @@ app.get("/", (c) => {
   return c.text("Hello Hono!");
 });
 
+app.get("/debug", (c) => {
+  return c.json(env);
+});
+
 console.log(`Server is running on http://localhost:${env.PORT}`);
 
 serve({
   fetch: app.fetch,
-  port: parseInt(env.PORT, 10),
+  port: env.PORT,
 });
