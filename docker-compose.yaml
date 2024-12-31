@@ -15,8 +15,10 @@ services:
       - PORT=${PORT}
       - DATABASE_URL=${POSTGRES_DB_URL}
     depends_on:
-      - postgres
-  postgres:
+      - db_postgres
+    networks:
+      - app-network
+  db_postgres:
     container_name: postgres
     restart: always
     image: postgres
